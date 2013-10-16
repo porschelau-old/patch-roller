@@ -53,6 +53,8 @@ class Dispatcher {
 		
 		$subject = new $controller($this->request);
 		$subject->{$this->controllerAction}();
+		
+		$subject->cleanup();
 	}
 	
 }

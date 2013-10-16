@@ -6,6 +6,7 @@
 namespace app\controller;
 
 use core\controller\BaseController as BaseController;
+use app\lib\database\Database as Database;
 
 class PatchController extends BaseController {
 	
@@ -13,7 +14,7 @@ class PatchController extends BaseController {
 	 * Apply the patch to the database
 	 */
 	public function apply() {
-			
+		
 	}
 	
 	/**
@@ -21,6 +22,21 @@ class PatchController extends BaseController {
 	 */
 	public function create() {
 		
-		var_dump($this->request->getArgv());
+		$db = Database::instance();
+		
+		var_dump($db->query("SELECT * FROM cake"));
 	} 
+	
+	/**
+	 * Clean up the resources used
+	 * (non-PHPdoc)
+	 * @see \core\controller\BaseController::cleanup()
+	 */
+	public function cleanup() {
+		parent::cleanup();
+		
+		$db = Database::instance();
+		$db->close();
+		
+	}
 }
