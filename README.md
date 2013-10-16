@@ -23,7 +23,7 @@ Optional parameter are expressed as key value pairs on the command.
 
 <table>
     <tr>
-        <th>Options<th>
+        <th>Options</th>
         <th>Description</th>
     <tr>
         <td>flush_db</td>
