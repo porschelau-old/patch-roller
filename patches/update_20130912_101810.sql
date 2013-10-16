@@ -1,0 +1,1 @@
+ALTER TABLE `user` ADD `test_column1` INT  NULL  DEFAULT NULL  AFTER `salt`;
