@@ -3,6 +3,11 @@
  * Helper class for translating the paths and help with things 
  * related to dispatching the controllers
  */
+
+namespace core;
+
+use app\controller;
+
 class Dispatcher {
 	
 	private $request;
@@ -39,10 +44,10 @@ class Dispatcher {
 	 * Invoke the controller indicated from the path and run the code base
 	 */
 	public function dispatch() {
-		//require the file indicated in the controller path
-		require_once $this->controllerPath;
 		
-		$subject = new $this->controllerName($this->request);
+		$controller = "app\\controller\\".$this->controllerName;
+		
+		$subject = new $controller($this->request);
 		$subject->{$this->controllerAction}();
 	}
 	

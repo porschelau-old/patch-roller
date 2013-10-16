@@ -5,6 +5,8 @@
  * @author jonlau
  *
  */
+namespace core;
+
 class Request {
 	
 	private $controller;

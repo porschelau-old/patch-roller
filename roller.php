@@ -17,8 +17,10 @@ require_once 'include/CoreDefine.php';
 require_once 'include/Config.php';
 
 //include core helpers
-require_once 'core/Dispatcher.php';
-require_once 'core/Request.php';
+require_once 'core/App.php';
+
+use core\Request as Request;
+use core\Dispatcher as Dispatcher;
 
 $request = Request::build($argv);
 

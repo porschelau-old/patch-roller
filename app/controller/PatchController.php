@@ -1,9 +1,13 @@
 <?php
+
 /**
  * Class to contain all the actions related to the patches
  */
+namespace app\controller;
 
-class PatchController {
+use core\controller\BaseController as BaseController;
+
+class PatchController extends BaseController {
 	
 	/**
 	 * Push one patch up to the server
