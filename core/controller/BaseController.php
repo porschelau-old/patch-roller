@@ -7,5 +7,13 @@ namespace core\controller;
 
 class BaseController {
 
+	/**
+	 * This is the request token which will be passed by the dispatcher
+	 * @var Request
+	 */
+	protected $request;
 	
+	public function __construct($request) {
+		$this->request = $request;
+	}
 }

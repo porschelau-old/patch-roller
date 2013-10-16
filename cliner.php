@@ -14,10 +14,9 @@
 define("ROOT_PATH", __DIR__);
 
 require_once 'include/CoreDefine.php';
-require_once 'include/Config.php';
 
 //include core helpers
-require_once 'core/App.php';
+require_once 'core/Core.php';
 
 use core\Request as Request;
 use core\Dispatcher as Dispatcher;

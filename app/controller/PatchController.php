@@ -21,5 +21,6 @@ class PatchController extends BaseController {
 	 */
 	public function create() {
 		
+		var_dump($this->request->getArgv());
 	} 
 }

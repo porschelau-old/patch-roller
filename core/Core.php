@@ -1,14 +1,10 @@
 <?php
 /**
- * This is a global namespace app loader
+ * Global core functions
  *
  * @author jonlau
  *
  */
-
-class App {
-
-}
 
 /**
  * defining the autoloader to use the class package path to infer the folder structure

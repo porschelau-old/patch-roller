@@ -11,16 +11,26 @@ class Request {
 	
 	private $controller;
 	private $action;
+	private $argv;
 	
 	private $parameter;
 	
-	public function __construct($controller, $action) {
+	public function __construct($controller, $action, $argv) {
 		$this->controller = $controller;
 		$this->action = $action;
+		$this->argv = $argv;
 	}
 	
 	/**
 	 * API to construct the request object based on the arguments we get from the command line
+	 * 
+	 * We also shift the array pointer here.
+	 * 
+	 * @example 
+	 * php cliner.php patch create arg0 arg1
+	 * 
+	 * $this->request->getArgv() will map to {0: argv0, 1: argv1}
+	 * 
 	 * @param unknown $argv
 	 * @throws RuntimeException
 	 * @return Request
@@ -40,7 +50,7 @@ class Request {
 			throw new RuntimeException("Action is null");
 		}
 		
-		return new Request($controller, $action);
+		return new Request($controller, $action, array_slice($argv, ARG_OFFSET));
 	}
 	
 	/**
@@ -52,5 +62,12 @@ class Request {
 	
 	public function getControllerAction() { 
 		return $this->action;
+	}
+	
+	/**
+	 * This interface will allow us to get the argument from the command line
+	 */
+	public function getArgv() {
+		return $this->argv;
 	}
 }

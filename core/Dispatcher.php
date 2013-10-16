@@ -7,6 +7,7 @@
 namespace core;
 
 use app\controller;
+use app\config;
 
 class Dispatcher {
 	
@@ -45,7 +46,10 @@ class Dispatcher {
 	 */
 	public function dispatch() {
 		
-		$controller = "app\\controller\\".$this->controllerName;
+		$controller = "\\app\\controller\\".$this->controllerName;
+		
+		//spin up the app core init 
+		\app\config\AppCore::__static();
 		
 		$subject = new $controller($this->request);
 		$subject->{$this->controllerAction}();
