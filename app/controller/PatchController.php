@@ -10,10 +10,10 @@ use core\controller\BaseController as BaseController;
 class PatchController extends BaseController {
 	
 	/**
-	 * Push one patch up to the server
+	 * Apply the patch to the database
 	 */
-	public function push() {
-		
+	public function apply() {
+			
 	}
 	
 	/**
