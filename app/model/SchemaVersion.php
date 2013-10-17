@@ -29,24 +29,33 @@ class SchemaVersion {
 		$db = Database::instance();
 		
 		//check for the empty database case
-		$hasVersionTable = $db->query("SHOW TABLES LIKE 'schema_version'");
+		$result = $db->query("SHOW TABLES LIKE 'schema_version'");
 		
 		//if we don't have version informat, we will just return null
-		if ($hasVersionTable->num_rows == 0) {
+		if ($result->num_rows == 0) {
 			$version =  null;
 			
 		} else {
-			$result = $db->query("SELECT * FROM `schema_version` ORDER BY `id` DESC LIMIT 0,1");
 			
-			if ($result->num_rows > 0) {
-				//get the first result
-				$data = $result->fetch_assoc();
-				$version = new SchemaVersion($data);
+			//result will be a QueryResultCollection object
+			$result2 = QueryHelper::query(__CLASS__, "SELECT * FROM `schema_version` ORDER BY `id` DESC LIMIT 0,1");
+			
+			if ($result2->length() > 0) {
+				
+				//get the current version object, we only expect one to return anyway
+				$version = $result2->current();
 				
 			} else {
 				$version = null;
 			}
+			
+			//close the schema version result
+			$result2->close();
 		}
+		
+		//close the table existence check result
+		$result->close();
+		
 		return $version;
 	}
 	
